@@ -16,7 +16,7 @@ concurrency:
 
 defaults:
   run:
-    working-directory: ./portefolio/portfolio
+    working-directory: ./portefolio
 
 jobs:
   build:
@@ -27,6 +27,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'pnpm'
 
       - uses: pnpm/action-setup@v2
         with:
@@ -39,9 +40,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('portefolio/portfolio/pnpm-lock.yaml') }}-${{ hashFiles('portefolio/portfolio/**/*.[jt]s', 'portefolio/portfolio/**/*.[jt]sx') }}
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('portefolio/pnpm-lock.yaml') }}-${{ hashFiles('portefolio/**/*.[jt]s', 'portefolio/**/*.[jt]sx', 'portefolio/**/*.ts', 'portefolio/**/*.tsx') }}
           restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('portefolio/portfolio/pnpm-lock.yaml') }}-
+            ${{ runner.os }}-nextjs-${{ hashFiles('portefolio/pnpm-lock.yaml') }}-
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -54,7 +55,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: portefolio/portfolio/out  # chemin depuis la racine du repo
+          path: portefolio/out   # 'out' si output: "export" dans next.config
 
   deploy:
     environment:
