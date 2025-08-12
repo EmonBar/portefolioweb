@@ -46,14 +46,12 @@ jobs:
         run: pnpm install --no-frozen-lockfile
 
       - name: Build static site
-        run: |
-          pnpm exec next build
-          pnpm exec next export
+        run: pnpm exec next build   # PAS de "next export"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./out               # généré par next build avec output:'export'
 
   deploy:
     needs: build
