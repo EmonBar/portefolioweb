@@ -1,14 +1,10 @@
-/** @type {import('next').NextConfig} */
-const repo = process.env.NEXT_PUBLIC_BASE_PATH || '';
+const isProd = process.env.NODE_ENV === 'production'
 
 const nextConfig = {
   output: 'export',
-  trailingSlash: true,
-  basePath: repo ? `/${repo}` : '',
-  assetPrefix: repo ? `/${repo}/` : '',
+  basePath: isProd ? '/portefolioweb' : '',
+  assetPrefix: isProd ? '/portefolioweb/' : '',
   images: { unoptimized: true },
-  eslint: { ignoreDuringBuilds: true },
-  typescript: { ignoreBuildErrors: true },
-};
+}
 
-export default nextConfig;
+export default nextConfig
