@@ -16,43 +16,24 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      CI: true
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v4
         with:
           version: 9
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v5
 
-      - name: Set BASE_PATH for Pages
-        run: |
-          if [[ "${{ github.event.repository.name }}" == "${{ github.repository_owner }}.github.io" ]]; then
-            echo "NEXT_PUBLIC_BASE_PATH=" >> $GITHUB_ENV
-          else
-            echo "NEXT_PUBLIC_BASE_PATH=${{ github.event.repository.name }}" >> $GITHUB_ENV
-          fi
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec next build
+      - run: touch out/.nojekyll
 
-      - name: Install deps
-        run: pnpm install --no-frozen-lockfile
-
-      - name: Build static site
-        run: pnpm exec next build   # output:'export' => génère ./out
-
-      - name: Add .nojekyll
-        run: touch out/.nojekyll
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
 
@@ -63,6 +44,5 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
+      - id: deployment
         uses: actions/deploy-pages@v4
