@@ -46,12 +46,15 @@ jobs:
         run: pnpm install --no-frozen-lockfile
 
       - name: Build static site
-        run: pnpm exec next build   # PAS de "next export"
+        run: pnpm exec next build   # output:'export' => génère ./out
+
+      - name: Add .nojekyll
+        run: touch out/.nojekyll
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out               # généré par next build avec output:'export'
+          path: ./out
 
   deploy:
     needs: build
