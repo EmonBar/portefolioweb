@@ -18,7 +18,8 @@ export function Education({ language }: EducationProps) {
       location: t.epita.location,
       period: "2020–2025",
       specialization: t.epita.description,
-      logo: "/logos/epita.png",
+      // chemin relatif pour fonctionner avec basePath sur Pages
+      logo: "logos/epita.png",
       current: true,
       website: "https://www.epita.fr/",
     },
@@ -28,7 +29,8 @@ export function Education({ language }: EducationProps) {
       location: t.heriot.location,
       period: "Jan–Jun 2022",
       specialization: t.heriot.description,
-      logo: "/logos/heriotwatt.png",
+      // idem
+      logo: "logos/heriotwatt.png",
       current: false,
       website: "https://www.hw.ac.uk/",
     },
@@ -38,7 +40,8 @@ export function Education({ language }: EducationProps) {
       location: t.sit.location,
       period: "Sep 2024–Jan 2025",
       specialization: t.sit.description,
-      logo: "/logos/sit.png",
+      // idem
+      logo: "logos/sit.png",
       current: false,
       website: "https://www.shibaura-it.ac.jp/en/",
     },

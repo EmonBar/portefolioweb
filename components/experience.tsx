@@ -17,7 +17,8 @@ export function Experience({ language }: ExperienceProps) {
       company: t.alten.company,
       location: t.alten.location,
       period: `Mar 2025–Sep 2025`,
-      logo: "/logos/alten.png",
+      // chemin relatif pour basePath
+      logo: "logos/alten.png",
       description: t.alten.description,
     },
     {
@@ -25,7 +26,8 @@ export function Experience({ language }: ExperienceProps) {
       company: t.bandai.company,
       location: t.bandai.location,
       period: "Aug 2023–Jan 2024",
-      logo: "/logos/bandai-namco.png",
+      // chemin relatif pour basePath
+      logo: "logos/bandai-namco.png",
       description: t.bandai.description,
     },
   ]
@@ -81,11 +83,4 @@ export function Experience({ language }: ExperienceProps) {
                     </li>
                   ))}
                 </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
+              <

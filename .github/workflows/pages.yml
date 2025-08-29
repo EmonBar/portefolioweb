@@ -29,7 +29,8 @@ jobs:
 
       - uses: actions/configure-pages@v5
 
-      - run: pnpm install --frozen-lockfile
+      # lockfile trop minimal → on laisse pnpm le régénérer
+      - run: pnpm install --no-frozen-lockfile
       - run: pnpm exec next build
       - run: touch out/.nojekyll
 
