@@ -83,4 +83,11 @@ export function Experience({ language }: ExperienceProps) {
                     </li>
                   ))}
                 </ul>
-              <
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
