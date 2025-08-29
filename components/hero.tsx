@@ -54,7 +54,7 @@ export function Hero({ language }: HeroProps) {
               <Mail size={24} />
             </a>
             <a
-              href="https://linkedin.com/in/emonbarberis"
+              href="https://www.linkedin.com/in/emon-barberis-675198267/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-slate-400 hover:text-violet-400 transition-all duration-200 transform hover:scale-110"
@@ -62,11 +62,14 @@ export function Hero({ language }: HeroProps) {
               <Linkedin size={24} />
             </a>
             <a
-              href="#"
-              className="text-slate-400 hover:text-violet-400 transition-all duration-200 transform hover:scale-110"
-            >
-              <Github size={24} />
-            </a>
+  	      href="https://github.com/EmonBar"
+  	      target="_blank"
+  	       rel="noopener noreferrer"
+  	      className="text-slate-400 hover:text-violet-400 transition-all duration-200 transform hover:scale-110"
+	    >
+  	      <Github size={24} />
+	    </a>
+
           </div>
 
           <button
